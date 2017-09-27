@@ -14,12 +14,29 @@
 				</div>
 
 				<div id="Body">
-					<div id="ClickText">
-						Number of clicks: something.
+
+					<div id="ClickArea">
+						<div class="text">
+							Number of clicks: <span id="ClickNum">0</span>
+						</div>
+						<div class="ButtonArea">
+							<button type="button" class="button" onclick="buttonCLick()">Click Me</button>
+						</div>
 					</div>
-					<div id="ButtonArea">
-						<button type="button" id = "button">Click Me</button>
+
+					<div id="UpgradeArea">
+						<div id="UpgradeClicks">
+							<div class="upgradeText">
+								Click Level: <span id="ClickLevel">1</span>
+								<br>
+								UpgradeCost: <span id="clickUpCost">10</span>
+							</div>
+							<div class="ButtonArea">
+								<button type="button" class="upgradeButton" onclick="upClickLevel()">Upgrade Clicks</button>
+							</div>
+						</div>
 					</div>
+					
 				</div>
 
 				<div>
@@ -30,7 +47,40 @@
 		</div>
 	</body>
 
+
+	<script>
+		var jsClickNum = document.querySelector('#ClickNum');
+		var jsClickLevel = document.querySelector('#ClickLevel');
+		var jsClickUpCost = document.querySelector('#clickUpCost');
+		var clicks = 0;
+		var clickLevel = 1;
+		var clickUpCost = 10;
+
+		function buttonCLick(){
+			clicks += clickLevel;
+			console.log(clicks);
+			jsClickNum.innerHTML = clicks;
+		}
+
+		function upClickLevel(){
+			if(clicks >= clickUpCost){
+				clicks -= clickUpCost;
+				clickLevel += 1;
+				var x = Math.floor((Math.random() * 20) + 15);
+				clickUpCost += x;
+				jsClickLevel.innerHTML = clickLevel;
+				jsClickNum.innerHTML = clicks;
+				jsClickUpCost.innerHTML = clickUpCost;
+			}
+			
+		}
+	</script>
+
 </html>
+
+
+
+
 
 
 
